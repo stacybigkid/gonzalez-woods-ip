@@ -1,19 +1,15 @@
-
 class RetinalImage:
-    def __init__(self, height, distance):
+    def __init__(self):
         
-        self.object_height = height
-        self. object_distance = distance
+        self.eye_focal_length = 17 # mm
+        self.foveal_area = 1.5 ** 2 # mm^2
+        self.foveal_cone_count = 3.37 * 10**5 # total cone count within fovea
+        self.foveal_density_per_mm_2 = 1.5 * 10**5 # cones/mm^2
 
-        self.eye_focal_length = 17
-        self.foveal_area = 1.5 ** 2
-        self.foveal_cone_count = 337000
-        self.foveal_density_per_mm_2 = 150000
+    def calculate_retinal_image_size(self, height, distance):
+        # input height and distance must be in meters
+        return (height * self.eye_focal_length) / distance
 
-    def calculate_retinal_image_size(self):
-        return (self.object_height * self.eye_focal_length) / self.object_distance
-
-# input height and distance must be in meters (m)
-r_i = RetinalImage(15, 100)
-print(f"The the retinal image height of the input object is {r_i.calculate_retinal_image_size()} mm")
+r_i = RetinalImage()
+print(f"The the retinal image height of the input object is {r_i.calculate_retinal_image_size(15, 100)} mm")
 
