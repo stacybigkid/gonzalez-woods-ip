@@ -8,7 +8,16 @@ class WeberTest:
         self.center_intensity = self.background_intensity + self.delta_i
 
         def get_background():
-            
+            pass
+
+        def display_center():
+            pass
+
+        def calculate_weber_ratio():
+            pass
+
+        def run():
+            pass
 
 
 
