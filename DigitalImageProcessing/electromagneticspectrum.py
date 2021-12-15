@@ -10,3 +10,9 @@ class ElectromagneticSpectrum:
         def calculate_frequency(self, lmda):
             # input lmda is wavelength in meters
             return self.c/lmda # Hz
+
+# In order for an object to be "seen" (imaged), 
+# the wavelength of the light source 
+# (from anywhere along electromatic spectrum)
+# must be the same size or smaller than the
+# the object itself.
