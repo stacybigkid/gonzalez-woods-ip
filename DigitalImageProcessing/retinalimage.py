@@ -11,5 +11,10 @@ class RetinalImage:
         return (height * self.eye_focal_length) / distance
 
 r_i = RetinalImage()
-print(f"The the retinal image height of the input object is {r_i.calculate_retinal_image_size(15, 100)} mm")
+h = 15 # m
+d = 100 # m
+print( f"A {h} meter high object viewed "
+       f"at a distance of {d} meters produces "
+       f"a retinal image {r_i.calculate_retinal_image_size(15, 100)} mm "
+        "in height.")
 
