@@ -6,17 +6,23 @@ class RetinalImage:
         self.foveal_cone_count = 3.37 * 10**5 # total cone count within fovea
         self.foveal_density_per_mm_2 = 1.5 * 10**5 # cones/mm^2
 
-    def calculate_retinal_image_size(self, height, distance):
+    def calculate_retinal_image_size(self, object_height, object_distance):
         # input height and distance must be the same metric unit
         # output in mm
-        return (height * self.eye_focal_length) / distance
+        return (object_height * self.eye_focal_length) / object_distance
 
-r_i = RetinalImage()
-h = 15000 
-d = 100000 
-unit = 'mm'
-print( f"A {h} {unit} high object viewed "
-       f"at a distance of {d} {unit} produces "
-       f"a retinal image {r_i.calculate_retinal_image_size(15, 100)} mm "
-        "in height.")
+    def calculate_object_size(self, image_height, object_distance):
+        # input height and distance must be the same metric unit
+        # output in mm
+        return (image_height / self.eye_focal_length) * object_distance
+
+if __name__ == "__main__":
+    r_i = RetinalImage()
+    h = 15000 
+    d = 100000 
+    unit = 'mm'
+    print( f"A {h} {unit} high object viewed "
+        f"at a distance of {d} {unit} produces "
+        f"a retinal image {r_i.calculate_retinal_image_size(15, 100)} mm "
+            "in height.")
 
