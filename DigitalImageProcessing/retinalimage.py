@@ -12,8 +12,8 @@ class RetinalImage:
         return (object_height * self.eye_focal_length) / object_distance
 
     def calculate_object_size(self, image_height, object_distance):
-        # input height and distance must be the same metric unit
-        # output in mm
+        # input height and distance must be in same unit (mm or m)
+        # output in m
         return (image_height / self.eye_focal_length) * object_distance
 
 if __name__ == "__main__":
