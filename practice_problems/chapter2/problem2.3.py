@@ -10,7 +10,7 @@ es = ElectromagneticSpectrum()
 # calculate wavelength from given frequency
 lmda = es.calculate_wavelength(60)
 
-# anwer in km
+# answer in km
 lmda = lmda / 1000
 
 print("Commercial alternating current has a wavelength "
