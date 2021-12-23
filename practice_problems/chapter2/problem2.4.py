@@ -23,8 +23,12 @@ protein = 0.01 * 10**-6
 
 print("""\nThe following wavelengths of radiation are required
 to view the specimens of interest:
-         cells: {:.2e}
-         bacteria: {:.2e}
-         viruses: {:.2e}
-         protein: {:.2e}""".format(cells, bacteria, viruses, protein))
+         cells:         {:.2e} m
+         bacteria:      {:.2e} m
+         viruses:       {:.2e} m
+         protein:       {:.2e} m""".format(cells, bacteria, viruses, protein))
+
+
+print("""\nAll objects can be viewed with a UV light source and
+a corresponding sensor.""")
 
