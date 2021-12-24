@@ -9,10 +9,10 @@ era lens substituting for the focal length of the eye.)'''
 
 ifi = InFocusImage(focal_length=35, sensor_area=7*7, sensor_element_count=1024*1024)
 
-# calculate area per cone
+# calculate area per pixel
 pixel_area = ifi.sensor_area / ifi.sensor_element_count
 
-# width of pixel (assuming cones are square)
+# width of pixel
 pixel_size = np.sqrt(pixel_area)
 
 # mm
