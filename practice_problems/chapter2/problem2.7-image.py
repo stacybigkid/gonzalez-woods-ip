@@ -28,7 +28,7 @@ y0 = img_wh // 2
 # apply illumination eqation defined in problem
 # to background of zeros
 def illuminate(x, y):
-    return 255 * np.exp(-1 * (((x - x0) ** 2) + ((y - y0) ** 2)))
+    return 255 * np.exp(-(((x - x0) ** 2) + ((y - y0) ** 2)))
 
 for x in range(img_wh):
     for y in range(img_wh):
