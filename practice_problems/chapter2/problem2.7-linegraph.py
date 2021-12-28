@@ -1,8 +1,7 @@
-"""Suppose that a flat area with center at Ax 0 , y 0 B is illuminated by a light source with
+"""Suppose that a flat area with center at x0 , y0  is illuminated by a light source with
 intensity distribution
 
-i(x, y) = Ke-[(x - x 0)^2 + (y - y 0)^2].
-
+i(x, y) = Ke-[(x - x0)^2 + (y - y0)^2].
 
 Assume for simplicity that the reflectance of the area is constant and equal to
 1.0, and let K=255. If the resulting image is digitized with k bits of intensity res-
