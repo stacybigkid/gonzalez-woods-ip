@@ -25,7 +25,7 @@ bg = np.zeros((img_wh, img_wh), np.uint8)
 x0 = img_wh // 2
 y0 = img_wh // 2
 
-# apply illumination eqation defined in problem
+# apply illumination equation defined in problem
 # to background of zeros
 def illuminate(x, y):
     return 255 * np.exp(-(((x - x0) ** 2) + ((y - y0) ** 2)))
@@ -35,13 +35,13 @@ for x in range(img_wh):
         intensity = illuminate(x, y)
         bg[x, y] = intensity
 
-# resize the image to see the function clearly
+# resize the image to see the function results clearly
 bg_resized = cv2.resize(bg, (512, 512), interpolation=cv2.INTER_CUBIC)
 
 # bin pixel intensities according to the desired bit image
 bg_resampled = bg_resized.copy()
 for bin in range(0, 255, interval):
-    mask = ((bg_resampled>bin) & (bg_resampled<=bin+interval))
+    mask = ((bg_resampled>=bin) & (bg_resampled<bin+interval))
     bg_resampled[mask] = bin
 
 print(len(np.unique(bg_resampled)))
