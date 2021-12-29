@@ -9,8 +9,6 @@ gray levels using a 56K baud modem?
 (b) What would the time be at 750K baud, a representative speed of a phone
 DSL (digital subscriber line) connection?"""
 
-import numpy as np
-
 bits_per_px = 8
 num_px = (1024 * 1024)
 start_stop_bits = num_px * 2
