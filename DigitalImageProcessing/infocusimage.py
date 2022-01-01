@@ -4,7 +4,7 @@ class InFocusImage:
     Default values correspond to the focal length (in mm)
     foveal area (mm^2), and number of cones in the human eye."""
 
-    def __init__(self, focal_length=17, sensor_area = 1.5 ** 2, sensor_element_count=3.37 * 10**5):
+    def __init__(self, focal_length, sensor_area = 1.5 ** 2, sensor_element_count=3.37 * 10**5):
         
         self.focal_length = focal_length # mm
         self.sensor_area = sensor_area # mm^2
@@ -14,12 +14,20 @@ class InFocusImage:
     def calculate_in_focus_image_size(self, object_height, object_distance):
         # input height and distance must be the same metric unit
         # output in mm
-        return (object_height * self.focal_length) / object_distance
+        return object_height * (self.focal_length / object_distance)
 
     def calculate_object_size(self, image_height, object_distance):
         # input height and distance must be in same unit (mm or m)
         # output in m
-        return (image_height / self.focal_length) * object_distance
+        return image_height / self.focal_length * object_distance
+
+    def calculate_focal_length(self, image_height, distance_to_object, object_height):
+        return distance_to_object * image_height / object_height
+
+    def calculate_distance_to_object(self, image_height, object_height):
+        return self.focal_length * object_height / image_height
+
+
 
 if __name__ == "__main__":
     ifi = InFocusImage()
