@@ -46,14 +46,19 @@ import math
 import numpy as np
 
 # change these according to the lens and sensor options
+# 25, 35, 200
 focal_length = 25 # mm 
+# 512, 1024, or 2048
 resolution = 512 # pixels
+
+print("tested focal length: {} mm".format(focal_length))
+print("tested chip resolution: {}".format(resolution))
 
 # px size specified in problem
 px_size = 0.008 # mm
-px_spacing = 0.008 # mm
+px_spacing = 0.002 # mm
 
-
+# calculate sensor specs 
 sensor_area = ((resolution*px_size) + ((resolution-1) * px_spacing)) ** 2 # mm^2
 sensor_element_count = resolution ** 2 # pixels
 sensor_height = np.round(np.sqrt(sensor_area), 0) # mm
@@ -62,25 +67,29 @@ sensor_height = np.round(np.sqrt(sensor_area), 0) # mm
 # with selected lens and sensor at
 # reasonable distance
 ifi = InFocusImage(focal_length, sensor_area, sensor_element_count)
-
 screen_height = 80 # mm
 distance = ifi.calculate_distance_to_object(sensor_height, screen_height)
-print("The chosen imaging system has a {} mm chip, and can view the entire screen from {} mm away.".format(sensor_height, distance))
+print("The chosen imaging system has a {} mm chip, ".format(sensor_height))
+print("and can view the entire screen from {} mm away.".format(distance))
 
 # calculate the area of 4 px required in problem
 px_area_4 = 4*(sensor_area/sensor_element_count)
+# px_area_4 = np.round(px_area_4, 2)
 
 # calculate the object size on the sensor
-blob_height = 0.8
+blob_height = 0.8 # mm
 
 ifi = InFocusImage(focal_length, sensor_area, sensor_element_count)
 blob_image_size = ifi.calculate_in_focus_image_size(blob_height, distance)
-print("tested focal length: {} mm".format(ifi.focal_length))
-print("tested chip resolution: {}".format(resolution))
-print("Blob image size on sensor: {:2e} mm".format(np.round(blob_image_size, 2)))
-
-# number of px occupied on sensor
-px = blob_image_size
+blob_image_size = np.round(blob_image_size, 2)
 
 
+print("Blobs will appear as {} mm^2 objects on the sensor.".format(blob_image_size))
+print("This is greater than the minumum area ({:2e} mm^2) specified in the problem.".format(px_area_4))
 
+if blob_image_size >= px_area_4:
+    print("The chosen camera and sensor specs are therefore sufficient.")
+
+else:
+    print("The chosen camera and sensor specs are therefore insufficient.")
+    print("The resolution of the sensor must be increased.")
